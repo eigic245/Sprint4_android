@@ -36,13 +36,10 @@ class ContactsAdapter(
     }
 
     inner class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private var nameLabel: TextView = itemView.findViewById(R.id.textview_name)
-        private var emailLabel: TextView = itemView.findViewById(R.id.textview_name)
+        private var title: TextView = itemView.findViewById(R.id.textview_name)
         private var descriptionItemLabel: TextView = itemView.findViewById(R.id.textview_description)
         private var imageView: ImageView = itemView.findViewById(R.id.imageview_thumb)
         private var currentContact: Contact? = null
-        //private var context: Context = android.view.View
-
 
         init {
             itemView.setOnClickListener {
@@ -55,17 +52,13 @@ class ContactsAdapter(
         /* Bind Contact name and image. */
         fun bind(contact: Contact) {
             currentContact = contact
-            // val fullName = "${contact.firstName} ${contact.lastName}"
-            nameLabel.text = contact.lastName
-            emailLabel.text = contact.lastName
-            descriptionItemLabel.text = contact.descriptionItem
-            if (contact.firstName =="1") contact.imageUrl=R.drawable.central_park
-            else if(contact.firstName == "2") contact.imageUrl=R.drawable.top_rock
-            else if(contact.firstName == "3") contact.imageUrl=R.drawable.ferry_land
-            else if(contact.firstName == "4" ) contact.imageUrl=R.drawable.high_line
+            title.text = contact.name
+            descriptionItemLabel.text = contact.description1
+            if (contact.id =="1") contact.imageUrl=R.drawable.central_park
+            else if(contact.id == "2") contact.imageUrl=R.drawable.top_rock
+            else if(contact.id == "3") contact.imageUrl=R.drawable.ferry_land
+            else if(contact.id == "4" ) contact.imageUrl=R.drawable.high_line
             else contact.imageUrl=R.drawable.vesel
-
-
             Glide.with(context).load(contact.imageUrl).into(imageView)
 
         }

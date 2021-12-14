@@ -14,4 +14,5 @@ class ContactViewModel : ViewModel() {
     fun select(contact: Contact) {
         selected.value = contact
     }
+
 }
